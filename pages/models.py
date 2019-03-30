@@ -42,6 +42,8 @@ class Project(models.Model):
     cited_source = models.TextField(blank = True)
     attachment_file = models.FilePathField(path="/home/images", match="foo.*", recursive=True, blank = True)
     
+    slug = models.SlugField(max_length=40)
+    hash = models.h
     ### MODEL RELATIONSHIP(S)
     author = models.ManyToManyField(Author, db_table="result")
 

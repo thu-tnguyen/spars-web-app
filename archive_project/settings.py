@@ -25,7 +25,7 @@ SECRET_KEY = '-5^!2kuqad^&o-p(gbvq0qmk^2xx7et6c8$fx(8921-gw7171b'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*'] #NEEDS EDITING. STATE ONLY ALLOWED DOMAIN
 
 
 # Application definition
@@ -76,12 +76,12 @@ WSGI_APPLICATION = 'archive_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'db.postgresql',
-        'USER': 'sparsclub',
-        'PASSWORD': 'sparsiezzel',
-        'HOST': '127.0.0.1',
-        'PORT': '8000',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd66d0f0t6i7k8i',
+        'USER': 'lvssnrdkmpeebp',
+        'PASSWORD': '24df47965971c85551d9985650609f568921fe9309789cfbd015e0afb3381911',
+        'HOST': 'ec2-75-101-131-79.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
