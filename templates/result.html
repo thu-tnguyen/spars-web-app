@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Search Result</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+    {% block content %}
+
+    <div class="container">
+        <h5>Search result for: <strong>{{ query }}</strong></h3>
+        {% if projects %}
+            <p>Found {{ projects|length }} project(s)</p>
+            <table class ="table table-bordered">
+                <thead class="thead">
+                    <th scope="col">Author(s)</th>
+                    <th scope="col">Project Title</th>
+                    <th scope="col">Division</th>
+                    <th scope="col">Mentor(s)</th>
+                    <th scope="col">Year</th>
+                    <th scope="col">Presentation Format</th>
+
+                    <!--
+                    <th>Footage Attachment</th>
+                    <th>Paper</th>
+                    -->
+                </thead>
+                    {% for project in projects %}
+                        <tr>
+                            <td><a href="http://">
+                                {% for author in project.author.all %}
+                                    {{ author.full_name }}
+                                {% endfor %}
+                            </a></td>
+                            <td><a href="{% url 'rsprojects' %}">{{ project.title }}</a></td>
+                            <td>{{ project.get_division_display }}</a></td>
+                            <td>{{ project.mentor }}</td>
+                            <td>{{ project.year }}</td>
+                            <td>{{ project.get_presentation_format_display }}</td>
+                        </tr>
+                    {% endfor %}
+            </table>
+
+            {% else %}
+                <p>No project matched your search criteria</p>
+
+        {% endif %}
+    </div>
+
+    {% endblock %}
+</body>
+</html>

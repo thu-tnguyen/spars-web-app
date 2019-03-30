@@ -1,0 +1,43 @@
+.bg-theme{
+    background-color: #ffca28;
+}
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#home_center{
+    width: 650px;
+    height: 400px;
+    padding: none;
+    margin: 150px 0;
+}
+
+#home_center img{
+    margin: 0 0 2rem;
+}
+
+#home_center p{
+    margin-top: 2rem;
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: #ffca28;
+    border-color: #ffca28;
+    color: #0d0d0d
+}
+
+#base_logo{
+    max-width: 12rem;
+    height: auto;
+}
+
+@media (min-width: 769px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
