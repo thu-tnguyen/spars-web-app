@@ -35,7 +35,7 @@
                                     {{ author.full_name }}
                                 {% endfor %}
                             </a></td>
-                            <td><a href="{% url 'rsprojects' %}">{{ project.title }}</a></td>
+                            <td><a href="{% url 'rsprojects' project.uuid %}">{{ project.title }}</a></td>
                             <td>{{ project.get_division_display }}</a></td>
                             <td>{{ project.mentor }}</td>
                             <td>{{ project.year }}</td>

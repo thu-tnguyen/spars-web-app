@@ -36,6 +36,3 @@ def search(request):
         projects = Project.objects.filter(title__icontains=q)            
         return render(request, 'result.html', {'projects': projects, 'query': q})
 
-def project_url_link(request, project_title):
-    q = get_object_or_404(Project, title=project_title)
-    return render_to_response('projects.html', context, RequestContext(request))

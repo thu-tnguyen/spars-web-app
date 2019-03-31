@@ -1,4 +1,5 @@
 from django.db import models
+import uuid
 
 class Author(models.Model):
     ### DATABASE FIELDS
@@ -31,7 +32,7 @@ class Project(models.Model):
     )
 
     ### DATABASE FIELDS
-    title = models.CharField(max_length=255, primary_key=True)
+    title = models.CharField(max_length=255)
     division = models.CharField('Division', max_length=4, choices=DIVISIONS)
     tagline = models.TextField()
     mentor = models.TextField()
@@ -40,10 +41,9 @@ class Project(models.Model):
     abstract = models.TextField()
     paper = models.TextField(blank = True)
     cited_source = models.TextField(blank = True)
-    attachment_file = models.FilePathField(path="/home/images", match="foo.*", recursive=True, blank = True)
+    remote_asset = models.FilePathField(path="/home/images", match="foo.*", recursive=True, blank = True)
     
-    slug = models.SlugField(max_length=40)
-    hash = models.h
+    ext_id = models.UUIDField(default=uuid.uuid4, editable=False)
     ### MODEL RELATIONSHIP(S)
     author = models.ManyToManyField(Author, db_table="result")
 
