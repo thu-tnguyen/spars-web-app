@@ -80,10 +80,10 @@ WSGI_APPLICATION = 'archive_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd66d0f0t6i7k8i',
-        'USER': 'lvssnrdkmpeebp',
+        'NAME': 'd1hsbog75vp99o',
+        'USER': 'ssofjnfgrdinom',
         'PASSWORD': '24df47965971c85551d9985650609f568921fe9309789cfbd015e0afb3381911',
-        'HOST': 'ec2-75-101-131-79.compute-1.amazonaws.com',
+        'HOST': 'ec2-54-197-232-203.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
@@ -129,4 +129,3 @@ STATIC_URL = '/static/'
 
 # Activate Django-Heroku
 django_heroku.settings(locals())
-DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
