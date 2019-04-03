@@ -13,29 +13,9 @@ class AboutPageView(TemplateView):
     template_name = 'about.html'
     model = Project, Author
 
-class ResultListView(ListView):
+class ResultListView(TemplateView):
     template_name = 'result.html'
     model = Project
-
-    def get_ordering(self):
-        ordering = self.request.GET.get('ordering', 'title')
-        # validate ordering here
-        return ordering
-
-    def get_queryset(self):
-        q = self.request.GET['q']
-        s = self.request.GET['s']
-
-        if s == 'title':
-            projects = Project.objects.filter(title__icontains=q)         
-        if s == 'author':
-            projects = Project.objects.filter(author__icontains=q)         
-        if s == 'mentor':
-            projects = Project.objects.filter(mentor__icontains=q)         
-        if s == 'tagline':
-            projects = Project.objects.filter(tagline__icontains=q)  
-            
-        return projects
 
 class ProjectDetailView(DetailView):
     template_name = 'projects.html'
