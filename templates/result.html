@@ -9,19 +9,18 @@
 <body>
     {% extends 'base.html' %}
     {% block content %}
-
     <div class="container">
         <h5>Search result for: <strong>{{ query }}</strong></h3>
         {% if projects %}
             <p>Found {{ projects|length }} project(s)</p>
             <table class ="table table-bordered table-responsive">
                 <thead class="thead">
-                    <th scope="col">Author(s)</th>
-                    <th scope="col">Project Title</th>
-                    <th scope="col">Division</th>
-                    <th scope="col">Mentor(s)</th>
-                    <th scope="col">Year</th>
-                    <th scope="col">Presentation Format</th>
+                    <th scope="col"><a href="?order_by=author">Author(s)</a></th>
+                    <th scope="col"><a href="?order_by=title">Project Title</a></th>
+                    <th scope="col"><a href="?order_by=division">Division</a></th>
+                    <th scope="col"><a href="?order_by=mentor">Mentor(s)</a></th>
+                    <th scope="col"><a href="?order_by=year">Year</a></th>
+                    <th scope="col"><a href="?order_by=presentation_format">Presentation Format</a></th>
 
                     <!--
                     <th>Footage Attachment</th>
@@ -44,8 +43,8 @@
                     {% endfor %}
             </table>
 
-            {% else %}
-                <p>No project matched your search criteria</p>
+        {% else %}
+            <p>No project matched your search criteria</p>
 
         {% endif %}
     </div>

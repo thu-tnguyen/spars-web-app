@@ -1,8 +1,8 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView, FormView, ListView
+from django.views.generic import TemplateView, ListView
+from django.views.generic.detail import DetailView
 from django.http import HttpResponse
 from pages.models import Project,Author
-
 
 ### All Template View classes 
 class HomePageView(TemplateView):
@@ -13,13 +13,38 @@ class AboutPageView(TemplateView):
     template_name = 'about.html'
     model = Project, Author
 
-class ResultPageView(TemplateView):
+class ResultListView(ListView):
     template_name = 'result.html'
-    model = Project, Author
+    model = Project
 
-class ProjectPageView(TemplateView):
+    def get_ordering(self):
+        ordering = self.request.GET.get('ordering', 'title')
+        # validate ordering here
+        return ordering
+
+    def get_queryset(self):
+        q = self.request.GET['q']
+        s = self.request.GET['s']
+
+        if s == 'title':
+            projects = Project.objects.filter(title__icontains=q)         
+        if s == 'author':
+            projects = Project.objects.filter(author__icontains=q)         
+        if s == 'mentor':
+            projects = Project.objects.filter(mentor__icontains=q)         
+        if s == 'tagline':
+            projects = Project.objects.filter(tagline__icontains=q)  
+            
+        return projects
+
+class ProjectDetailView(DetailView):
     template_name = 'projects.html'
-    model = Project, Author
+    context_object_name = 'project'
+    model = Project
+    
+    # Read UUID into Slug Field to accomodate DetailView 
+    slug_field = 'ext_id'
+    slug_url_kwarg = 'ext_id'
 
 class AlumniTreePageView(TemplateView):
     template_name = 'alumni_tree.html'
@@ -29,10 +54,20 @@ class ContactPageView(TemplateView):
     template_name = 'contact.html'
     model = Project, Author
 
+
 ### ???
 def search(request):
     if 'q' in request.GET and request.GET['q']:
         q = request.GET['q']
-        projects = Project.objects.filter(title__icontains=q)            
-        return render(request, 'result.html', {'projects': projects, 'query': q})
+        s = request.GET['s']
 
+        if s == 'title':
+            projects = Project.objects.filter(title__icontains=q)         
+        if s == 'author':
+            projects = Project.objects.filter(author__icontains=q)         
+        if s == 'mentor':
+            projects = Project.objects.filter(mentor__icontains=q)         
+        if s == 'tagline':
+            projects = Project.objects.filter(tagline__icontains=q)  
+        
+        return render(request, 'result.html', {'projects': projects, 'query': q})

@@ -10,6 +10,57 @@
     {% extends 'base.html' %}
     {% block content %}
 
+    <div class="container custom-container">
+        <h2>{{ object.title }}</h2>
+        <!-- Draw decorative layout block-->
+        <div class="deco-layout-block"></div>
+        
+        <table>
+            <tr>
+                <td><strong>Division: </strong></td>
+                <td>{{ object.get_division_display }}</td>
+            </tr>
+            <tr>
+                <td><strong>Author(s): </strong></td>
+                <td>
+                    {% for author in project.author.all %}
+                        {{ author.full_name }}
+                    {% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Mentor(s): </strong></td>
+                <td>{{ object.mentor }}</td>
+            </tr>
+            <tr>
+                <td><strong>Year: </strong></td>
+                <td>{{ object.year }}</td>
+            </tr>
+            <tr>
+                <td><strong>Presentation Format: </strong></td>
+                <td>{{ object.get_presentation_format_display }}</td>
+            </tr>
+            <tr>
+                <td><strong>Tags: </strong></td>
+                <td>{{ object.tagline }}</td>
+            </tr>
+            <tr>
+                <td><strong>Cited Sources: </strong></td>
+                <td>{{ object.cited_source }}</td>
+            </tr>
+            <tr>
+                <td><strong>Abstract: </strong></td>
+                <td>{{ object.abstract }}</td>
+            </tr>
+        </table>
+        
+        <img src="" alt="">
+        <iframe class="col mx-auto d-block"  width="640" height="360" style="padding: 0" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
+        <strong>Paper:</strong>
+        <p>{{ object.paper }}</p>
+
+    </div>
+    
 
     {% endblock %}
 </body>

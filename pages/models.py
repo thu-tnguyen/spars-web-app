@@ -50,6 +50,6 @@ class Project(models.Model):
     ### TO STRING METHOD
     def __str__(self):
         return self.title
-
+    
 
 #### Test
