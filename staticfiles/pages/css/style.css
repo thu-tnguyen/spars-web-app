@@ -1,0 +1,103 @@
+.bg-theme{
+    background-color: #ffca28;
+}
+
+
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+p, h1, h2, h3, h4, h5, td{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana;
+}
+
+td{
+    padding-left: 7.5px;
+    padding-right: 7.5px;
+    height: 40px;
+    width: 15rem;
+}
+
+.custom-heading{
+    font-weight: bold; 
+}
+
+
+#base-logo{
+    max-width: 12rem;
+    height: auto;
+}
+
+.deco-layout-block{
+    width: 5rem;
+    height:.5rem;
+    background-color: #303030;
+    margin: 2rem 0;
+}
+
+.custom-container{
+    max-width: 92%;
+    margin-top: 7.5rem;
+}
+
+/* Customized styling in Home page */
+
+.reduce-spacing{
+    margin-bottom: -1rem;
+}
+
+.custom-form{
+    height: 3rem;
+}
+
+.custom-form-sm{
+    margin-bottom: 2rem;
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: #ffca28;
+    border-color: #ffca28;
+    color: #0d0d0d
+}
+
+#home-center{
+    width: 800px;
+    height: 400px;
+    padding: none;
+    margin: 150px 0;
+}
+
+#home-center img{
+    margin: 0 0 2rem;
+}
+
+#home-center p{
+    margin-top: 2rem;
+}
+
+/* Media Queries */
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+
+    .custom-container{
+        max-width: 70%;
+    }
+
+    .custom-form-sm{
+        margin-bottom: 3rem;
+    }
+  }
+
+@media (min-width: 992px) {
+    .custom-container{
+        max-width: 50%;
+    }
+}
