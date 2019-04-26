@@ -160,9 +160,9 @@ td{
   }
 
 .custom-card{
-    height: 650px;
+    height: 780px;
     background-color: #f4f4f4;
-    padding: 5rem 2rem;
+    padding: 4rem 2rem;
     margin-bottom: 5rem;
 }
 
@@ -240,6 +240,19 @@ display:block;
 }
 
 /* Media Queries */
+@media (min-width: 375px) {
+    .custom-card{
+        height: 680px;
+        padding-bottom: 8rem;
+    }
+}
+
+@media (min-width: 576px) {
+    .custom-card{
+        height: 550px;
+        padding-bottom: 10rem;
+    }
+}
 
 @media (min-width: 768px) {
     .bd-placeholder-img-lg {
