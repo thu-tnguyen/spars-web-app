@@ -4,9 +4,6 @@ from django.views.generic.detail import DetailView
 from django.http import HttpResponse
 from pages.models import Project,Author
 
-from .filters import ResultListFilter
-from django.db.models.query_utils import Q
-
 
 ### All Template View classes 
 class HomePageView(TemplateView):
