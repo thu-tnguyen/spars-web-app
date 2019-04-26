@@ -83,3 +83,5 @@ def search(request):
         Project.objects.order_by(sort_by)
 
         return render(request, 'result.html', {'projects': projects, 'query': q, 'order_by': sort_by})
+
+    
