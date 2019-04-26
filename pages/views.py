@@ -21,7 +21,6 @@ class ResultListView(ListView):
     template_name = 'result.html'
     context_object_name = 'projects'
     ordering = ['-ext_id']
-    filter_class = ResultListFilter
 
     def get_queryset(self):
         q = self.request.GET.get('q')
