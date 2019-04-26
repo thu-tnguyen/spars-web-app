@@ -6,12 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
+    {% load static %}
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'bootstrap/dist/css/bootstrap.min.css' %}">
 
     <!-- Custom static style -->
-    {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'pages/css/style.css' %}">
+
+    <!-- Icon Supply via Google Web Fonts -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
     <!-- Title -->
     <title>Archive Project | Student Project and Research Symposium Club</title>
@@ -19,46 +22,80 @@
 </head>
 
 <body>
+    <img class="cover-bg img-fluid" src="{% static 'pages/images/bg2.jpg' %}">
     <!-- Navbar-->
-    <div class="d-flex flex-column flex-row align-center p-3 px-md-4 mb-3 bg-theme border-bottom shadow-sm">
+    <div class="d-flex flex-column flex-row align-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-lg">
         <nav class="my-2 my-md-0 mr-md-3" style="text-align: center">
             <a class="p-2 text-dark" href="/">Home</a>
+            <a class="p-2 text-dark" href="/browse/">Projects</a>
             <a class="p-2 text-dark" href="/alumni_tree/">Alumni Tree</a>
-            <a class="p-2 text-dark" href="/about/">About us</a>
-            <a class="p-2 text-dark" href="/contact/">Contact</a>
+            <a class="p-2 text-dark" href="/#about">About us</a>
+            <a class="p-2 text-dark" href="/#contact">Contact</a>
         </nav>
     </div>
 
     <!-- Search -->
-    <div id="home-center" class="col mx-auto d-block">
-        <img class="img-fluid mx-auto d-block" src="{% static 'pages/images/logo.png' %}" alt="logo" style="max-width: 60%">
-        
+    <div class="home-center home-gray-block" style="opacity: .59;"></div>
+    <div class="home-center col mx-auto d-block" style="margin-top: 7rem;">
+        <img class="img-fluid mx-auto d-block" src="{% static 'pages/images/logo.png' %}" alt="logo" style="max-height: 8.5rem; max-width: auto; margin-top: 10rem;">
+            
         <!-- Search Form -->
-        <form action="/result/" method="get" style="margin-top: -2rem">
+        <form action="/result/" method="get">
             <div class="form-row">
                 <div class="form-group col-md-10 reduce-spacing">
                     <label for="searchInput"></label>
-                    <input name="q" id="searchInput" type="text" placeholder="Search..." class="form-control custom-form" aria-label="Search">
+                    <input name="q" id="searchInput" type="text" placeholder="Search..." class="form-control custom-form shadow-lg" aria-label="Search">
                 </div>
 
-                <div class="form-group col-md-2 custom-form-sm custom-form">
-                    <label for="searchFieldSelect"></label>
-                    <select name="s" id="searchFieldSelect" class="form-control custom-form">
-                        <option selected>All fields</option>
-                        <option value="title">Title</option>
-                        <option value="author">Author</option>
-                        <option value="mentor">Mentor</option>
-                        <option value="tagline">Tag</option>
-                        
-                    </select>
-                </div>
+                    <div class="form-group col-md-2 custom-form-sm custom-form">
+                        <label for="searchFieldSelect"></label>
+                        <select name="s" id="searchFieldSelect" class="form-control custom-form shadow-lg">
+                            <option selected value="all">All fields</option>
+                            <option value="title">Title</option>
+                            <option value="author">Author</option>
+                            <option value="mentor">Mentor</option>
+                            <option value="tagline">Tag</option>
+                            
+                        </select>
+                    </div>
+                <input class="mx-auto d-block btn btn-outline-warning my-2 my-sm-0" type="submit" value="Search"></input>
             </div>
-            <input class="mx-auto d-block btn btn-primary my-2 my-sm-0" type="submit" value="Search"></input>
         </form>
 
-        <!-- Quick Introduction -->
-        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate</p>
     </div>
+
+    <a href="#about" class="mx-auto d-block btn btn-primary btn-xl btn-circle shadow-lg" style="margin-top: -5rem;">
+        <i class="fas fa-chevron-down " style="color: #ffffff;"></i>
+    </a>
+
+    <div style="background: #eaeaea; height: 2000px;"> 
+        <!-- About Us -->
+        <div class="my-5" style="padding-top: .7rem;"></div>
+        <div class="custom-card shadow-lg" id="about">
+            <img class="left-bottom-decoration" src="{% static 'pages/images/low-poly.png' %}">
+            <h1>About us</h1>
+            <div class="deco-layout-block"></div>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat.</p>
+            <p>Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+                Lorem ipsum dolor sit amet, consec</p>
+        </div>
+
+        <!-- Image -->
+    <div>
+        <img class="img-cover img-fluid" src="{% static 'pages/images/img1.png' %}">
+    </div>
+
+        <!-- Contact -->
+        <div class="my-5"></div>
+        <div class="custom-card shadow-lg" id="contact">
+            <h1>Contact us</h1>
+            <div class="deco-layout-block"></div>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat.</p>
+            <p>Lorem ipsum dolor sit amet, cons ectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+                Lorem ipsum dolor sit amet, consec</p>
+        </div>
+    </div>
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS-->

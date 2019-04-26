@@ -4,18 +4,49 @@ from django.views.generic.detail import DetailView
 from django.http import HttpResponse
 from pages.models import Project,Author
 
+from .filters import ResultListFilter
+from django.db.models.query_utils import Q
+
+
 ### All Template View classes 
 class HomePageView(TemplateView):
     template_name = 'home.html'
     model = Project, Author
 
-class AboutPageView(TemplateView):
-    template_name = 'about.html'
-    model = Project, Author
-
-class ResultListView(TemplateView):
-    template_name = 'result.html'
+class BrowseListView(ListView):
     model = Project
+    template_name = 'browse.html'
+    context_object_name = 'projects'
+    ordering = ['-ext_id']
+
+class ResultListView(ListView):
+    model = Project
+    template_name = 'result.html'
+    context_object_name = 'projects'
+    ordering = ['-ext_id']
+    filter_class = ResultListFilter
+
+    def get_queryset(self):
+        q = self.request.GET.get('q')
+        s = self.request.GET.get('s')
+
+        if s == 'all':
+            projects = Project.objects.filter(title__icontains=q) or Project.objects.filter(tagline__icontains=q) or Project.objects.filter(author__icontains=q) or Project.objects.filter(mentor__icontains=q)
+        if s == 'title':
+            projects = Project.objects.filter(title__icontains=q)         
+        if s == 'author':
+            projects = Project.objects.filter(author__icontains=q)         
+        if s == 'mentor':
+            projects = Project.objects.filter(mentor__icontains=q)         
+        if s == 'tagline':
+            projects = Project.objects.filter(tagline__icontains=q)  
+        return projects
+    
+    def get_context_data(self, **kwargs):
+        context = super(ResultListView, self).get_context_data(**kwargs)
+        search_query = self.get_queryset()
+        return context
+
 
 class ProjectDetailView(DetailView):
     template_name = 'projects.html'
@@ -35,11 +66,14 @@ class ContactPageView(TemplateView):
     model = Project, Author
 
 
-### ???
 def search(request):
     if 'q' in request.GET and request.GET['q']:
         q = request.GET['q']
         s = request.GET['s']
+        sort_by = request.GET.get('sort_by', '')
+
+        if s == 'all':
+            projects = Project.objects.filter(title__icontains=q) or Project.objects.filter(tagline__icontains=q) or Project.objects.filter(author__icontains=q) or Project.objects.filter(mentor__icontains=q)
 
         if s == 'title':
             projects = Project.objects.filter(title__icontains=q)         
@@ -50,4 +84,6 @@ def search(request):
         if s == 'tagline':
             projects = Project.objects.filter(tagline__icontains=q)  
         
-        return render(request, 'result.html', {'projects': projects, 'query': q})
+        Project.objects.order_by(sort_by)
+
+        return render(request, 'result.html', {'projects': projects, 'query': q, 'order_by': sort_by})
