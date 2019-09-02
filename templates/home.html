@@ -21,16 +21,15 @@
 
 </head>
 
-<body>
+<body class="home-links">
     <img class="cover-bg img-fluid" src="{% static 'pages/images/bg2.png' %}">
     <!-- Navbar-->
-    <div class="d-flex flex-column flex-row align-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-lg">
+    <div class="navbar-color d-flex flex-column flex-row align-center p-3 px-md-4 mb-3 shadow-lg">
         <nav class="my-2 my-md-0 mr-md-3" style="text-align: center">
-            <a class="p-2 text-dark" href="/">Home</a>
-            <a class="p-2 text-dark" href="/browse/">Projects</a>
-            <a class="p-2 text-dark" href="/alumni_tree/">Alumni Tree</a>
-            <a class="p-2 text-dark" href="/#about">About us</a>
-            <a class="p-2 text-dark" href="/#contact">Contact</a>
+            <a class="p-2 text-light" href="/">Home</a>
+            <a class="p-2 text-light" href="/browse/">Browse projects</a>
+            <a class="p-2 text-light" href="/#about">About us</a>
+            <a class="p-2 text-light" href="/#contact">Contact</a>
         </nav>
     </div>
 
@@ -40,12 +39,12 @@
         <img class="img-fluid mx-auto d-block" src="{% static 'pages/images/logo.png' %}" alt="logo" style="max-height: 8.5rem; max-width: auto; margin-top: 10rem;">
             
         <!-- Search Form -->
-        <form action="/result/" method="get">
-            <div class="form-row">
-                <div class="form-group col-md-10 reduce-spacing">
+        <form action="/browse/" method="get">
+                <div class="form-group reduce-spacing px-3">
                     <label for="searchInput"></label>
                     <input name="q" id="searchInput" type="text" placeholder="Search..." class="form-control custom-form shadow-lg" aria-label="Search">
                 </div>
+                <!-- <input class="form-group mx-auto d-block btn btn-outline-warning py-2 mt-4" type="submit" value="Search"></input>
 
                     <div class="form-group col-md-2 custom-form-sm custom-form">
                         <label for="searchFieldSelect"></label>
@@ -57,21 +56,23 @@
                             <option value="tagline">Tag</option>
                             
                         </select>
-                    </div>
-                <input class="mx-auto d-block btn btn-outline-warning my-2 my-sm-0" type="submit" value="Search"></input>
-            </div>
+                    </div> -->
+                
         </form>
+        <div class="container pt-5">
+            <a href="/browse/" class="underline-text">or browse projects here</a>
+        </div>
 
     </div>
 
-    <a href="#about" class="mx-auto d-block btn btn-primary btn-xl btn-circle shadow-lg" style="margin-top: -5rem;">
+    <a href="#about" class="mx-auto d-block btn btn-xl btn-circle shadow-lg" style="margin-top: -7rem; background-color: #2e73c6">
         <i class="fas fa-chevron-down " style="color: #ffffff;"></i>
     </a>
 
-    <div style="background: #eaeaea; height: 2000px;"> 
+    <div style="background: #f4f4f4; height: 1200px;"> 
         <!-- About Us -->
-        <div class="my-5" style="padding-top: .7rem;"></div>
-        <div class="custom-card shadow-lg" id="about">
+        <div class="my-5"></div>
+        <div class="custom-card" id="about">
             <!--<img class="left-bottom-decoration" src="{% static 'pages/images/low-poly.png' %}">-->
             <h1>About us</h1>
             <div class="deco-layout-block"></div>
@@ -80,14 +81,10 @@
                 Lorem ipsum dolor sit amet, consec</p>
         </div>
 
-        <!-- Image -->
-    <div>
-        <img class="img-cover img-fluid" src="{% static 'pages/images/img1.png' %}">
-    </div>
+        <div class="dark-line"></div>
 
         <!-- Contact -->
-        <div class="my-5"></div>
-        <div class="custom-card shadow-lg" id="contact">
+        <div class="custom-card" id="contact">
             <h1>Contact us</h1>
             <div class="deco-layout-block"></div>
             <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat.</p>

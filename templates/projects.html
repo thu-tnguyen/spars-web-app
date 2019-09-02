@@ -9,56 +9,56 @@
 <body>
     {% extends 'base.html' %}
     {% block content %}
-
-    <div class="container custom-container">
-      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h4>{{ object.title }}</h4>
-      </div>
-            
-        <table class="container" style="background: #f4f4f4">
-            <tr>
-                <td><strong>Division: </strong></td>
-                <td>{{ object.get_division_display }}</td>
-            </tr>
-            <tr>
-                <td><strong>Author(s): </strong></td>
-                <td>
-                    {% for author in project.author.all %}
-                        {{ author.full_name }}
-                    {% endfor %}
-                </td>
-            </tr>
-            <tr>
-                <td><strong>Mentor(s): </strong></td>
-                <td>{{ object.mentor }}</td>
-            </tr>
-            <tr>
-                <td><strong>Year: </strong></td>
-                <td>{{ object.year }}</td>
-            </tr>
-            <tr>
-                <td><strong>Presentation Format: </strong></td>
-                <td>{{ object.get_presentation_format_display }}</td>
-            </tr>
-            <tr>
-                    <td><strong>Cited Sources: </strong></td>
-                    <td>{{ object.cited_source }}</td>
-                </tr>
-            <tr>
-                <td><strong>Tags: </strong></td>
-                <td>{{ object.tagline }}</td>
-            </tr>
-        </table>
-        
-        <img src="" alt="">
-        <iframe class="col mx-auto d-block"  width="640" height="360" style="padding: 0" src="https://www.youtube.com/watch?v=wS5rn2ZLttU"></iframe>
-        <div class="container my-5">
-            <strong>Abstract:</strong>
-            <p class="my-3">{{ object.abstract }}</p>
+    <div class="bg-gray cover">
+        <div class="container custom-container pt-5">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h4>{{ object.title }}</h4>
         </div>
+                
+            <table class="container" style="background: #f4f4f4;">
+                <tr class="row">
+                    <td class="px-5 col-4"><strong>Division: </strong></td>
+                    <td class="col-8">{{ object.get_division_display }}</td>
+                </tr>
+                <tr class="row">
+                    <td class="px-5 col-4"><strong>Author(s): </strong></td>
+                    <td class="col-8">
+                        {% for author in project.author.all %}
+                            {{ author.full_name }}
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr class="row">
+                    <td class="px-5 col-4"><strong>Mentor(s): </strong></td>
+                    <td class="col-8">{{ object.mentor }}</td>
+                </tr>
+                <tr class="row">
+                    <td class="px-5 col-4"><strong>Year: </strong></td>
+                    <td class="col-8">{{ object.year }}</td>
+                </tr>
+                <tr class="row">
+                    <td class="px-5 col-4"><strong>Presentation Format: </strong></td>
+                    <td class="col-8">{{ object.get_presentation_format_display }}</td>
+                </tr>
+                <tr class="row">
+                        <td class="px-5 col-4"><strong>Cited Sources: </strong></td>
+                        <td class="col-8">{{ object.cited_source }}</td>
+                    </tr>
+                <tr class="row">
+                    <td class="px-5 col-4"><strong>Tags: </strong></td>
+                    <td class="col-8">{{ object.tagline }}</td>
+                </tr>
+            </table>
+            
+            <img src="" alt=""></img>
+            <iframe class="col mx-auto d-block"  width="640" height="360" style="padding: 0" src="https://www.youtube.com/watch?v=wS5rn2ZLttU"></iframe>
+            <div class="container my-5">
+                <strong>Abstract:</strong>
+                <p class="my-3">{{ object.abstract }}</p>
+            </div>
 
+        </div>
     </div>
-    
     {% endblock %}
 </body>
 </html>

@@ -8,45 +8,27 @@
     
     {% load static %}
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{% static 'bootstrap/dist/css/bootstrap.min.css' %}">
-
-    <!-- Custom static style -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Our Custom CSS, static file -->
     <link rel="stylesheet" type="text/css" href="{% static 'pages/css/style.css' %}">
-
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
     <!-- Icon Supply via Google Web Fonts -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-</head>
+
+  </head>
 
 <body>
     <!-- Navbar-->
-    <div style="margin-bottom: 5rem">
-        <nav class="navbar navbar-light bg-white fixed-top border-bottom">
-          <!-- Logo -->
-          <a href="/" class="navbar-brand mx-auto"><img id="base-logo" src="{% static 'pages/images/logo2.png' %}" alt="logo"></a>
-          <!-- Nav toggler -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-              <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                  <a class="nav-link p-2 text-dark" href="/">Home<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active">
-                  <a class="nav-link p-2 text-dark" href="/browse/">Projects</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link p-2 text-dark" href="/alumni_tree/">Alumni Tree</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link p-2 text-dark" href="/#about">About us</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link p-2 text-dark" href="/#contact">Contact</a>
-                </li>
-              </ul>
-            </div>
-              <!-- Search form -->
+    <div class="navbar-color d-flex flex-column flex-row align-center p-3 px-md-4 mb-3" style="text-align: center">
+        <nav class="my-2 my-md-0 mr-md-3">
+            <!-- <a  href="/">
+                <img src="{% static 'pages/images/logo.png' %}" width="auto" height="40" alt="">
+            </a>             -->
+            <a class="p-2 text-light" href="/">Home</a>
+            <a class="p-2 text-light" href="/browse/">Browse projects</a>
+            <a class="p-2 text-light" href="/#about">About us</a>
+            <a class="p-2 text-light" href="/#contact">Contact</a>
         </nav>
     </div>
  
@@ -58,10 +40,21 @@
         {% endblock %}
 
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS-->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- jQuery CDN -->
+    <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+    <!-- Popper.JS -->      
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <!-- jQuery Custom Scroller CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>    
+    <!-- Ajax -->
+    <script src="{% static 'js/ajax.js' %}"></script>
+    <!-- Datatables -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.10.18/af-2.3.3/b-1.5.6/b-colvis-1.5.6/b-html5-1.5.6/b-print-1.5.6/cr-1.5.0/fc-3.2.5/fh-3.1.4/kt-2.5.0/r-2.2.2/rg-1.1.0/rr-1.2.4/datatables.min.css"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.10.18/af-2.3.3/b-1.5.6/b-colvis-1.5.6/b-html5-1.5.6/b-print-1.5.6/cr-1.5.0/fc-3.2.5/fh-3.1.4/kt-2.5.0/r-2.2.2/rg-1.1.0/rr-1.2.4/datatables.min.js"></script>
+
 </body>
 </html>
