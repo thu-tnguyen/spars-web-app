@@ -8,7 +8,7 @@
     
     {% load static %}
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'bootstrap/dist/css/bootstrap.min.css' %}">
     <!-- Our Custom CSS, static file -->
     <link rel="stylesheet" type="text/css" href="{% static 'pages/css/style.css' %}">
     <!-- Scrollbar Custom CSS -->
@@ -20,22 +20,17 @@
 
 <body>
     <!-- Navbar-->
-    <div class="navbar-color d-flex flex-column flex-row align-center p-3 px-md-4 mb-3" style="text-align: center">
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+        <a class="my-0 mr-md-auto font-weight-normal" href="/">
+            <img src="{% static 'pages/images/logo_2.png' %}" alt="logo" style="max-height: 2rem; max-width: auto;">
+        </a>
         <nav class="my-2 my-md-0 mr-md-3">
-            <!-- <a  href="/">
-                <img src="{% static 'pages/images/logo.png' %}" width="auto" height="40" alt="">
-            </a>             -->
-            <a class="p-2 text-light" href="/">Home</a>
-            <a class="p-2 text-light" href="/browse/">Browse projects</a>
-            <a class="p-2 text-light" href="/#about">About us</a>
-            <a class="p-2 text-light" href="/#contact">Contact</a>
+            <a class="p-4 nav-text" href="/">Home</a>
+            <a class="p-4 nav-text" href="/browse/">Browse projects</a>
+            <a class="p-4 nav-text" href="/#about">About us</a>
+            <a class="p-4 nav-text" href="/#contact">Contact</a>
         </nav>
-    </div>
- 
-
-
-
-    
+      </div>
         {% block content %}
         {% endblock %}
 

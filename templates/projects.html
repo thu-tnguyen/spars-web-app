@@ -9,13 +9,13 @@
 <body>
     {% extends 'base.html' %}
     {% block content %}
-    <div class="bg-gray cover">
-        <div class="container custom-container pt-5">
-        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <div>
+        <div class="container custom-container">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom border-dark">
             <h4>{{ object.title }}</h4>
         </div>
                 
-            <table class="container" style="background: #f4f4f4;">
+            <table class="container">
                 <tr class="row">
                     <td class="px-5 col-4"><strong>Division: </strong></td>
                     <td class="col-8">{{ object.get_division_display }}</td>
