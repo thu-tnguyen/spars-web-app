@@ -17,7 +17,7 @@ p, a, td {
 }
 
 h1{
-    font-family: 'Bodoni 72';
+    font-family: 'Bodoni* 11';
     font-weight: bold;
     font-size: 3.6rem;
     color: #3f3f3f;
@@ -56,6 +56,11 @@ td{
     width: 15rem;
 }
 
+footer {
+  background-color: #efefef;
+  color: #707070;
+}
+
 .custom-heading{
     font-weight: bold; 
 }
@@ -69,7 +74,7 @@ td{
 .deco-layout-block{
     width: 4rem;
     height:.2rem;
-    background-color: #707070;
+    background-color: #3f3f3f;
     margin: .8rem 0 2rem 1rem;
 }
 
@@ -203,6 +208,30 @@ td{
     z-index: -1;
 }
 
+#home-decor-block-1{
+  height: 17rem;
+  width: 17rem;
+  background-color: #707070;
+  opacity: .39;
+  /* Set up positioning */
+  position: absolute;
+  top: 16rem;
+  left: 0;
+  z-index: 0;
+}
+
+#home-decor-block-2 {
+  height: 10rem;
+  width: 20rem;
+  background-color: #707070;
+  opacity: .39;
+  /* Set up positioning */
+  position: absolute;
+  bottom: 0;
+  right: 3rem;
+  z-index: 0;
+}
+
 .btn-circle.btn-xl {
     width: 60px;
     height: 60px;
@@ -283,10 +312,10 @@ display:block;
 /* Media Queries */
 @media (min-width: 375px) {
   .custom-card-1 {
-      height: 35rem;  
+      height: 47rem;  
   }
   .custom-card-2 {
-    height: 25rem;  
+    height: 30rem;  
   }
   .custom-container{
     padding: 0 2rem 0 2rem;
