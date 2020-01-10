@@ -20,7 +20,7 @@
 
 <body>
     <!-- Navbar-->
-    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 bg-white border-bottom box-shadow">
         <a class="my-0 mr-md-auto font-weight-normal" href="/">
             <img src="{% static 'pages/images/logo_2.png' %}" alt="logo" style="max-height: 2rem; max-width: auto;">
         </a>
@@ -33,7 +33,15 @@
       </div>
         {% block content %}
         {% endblock %}
-
+    <!-- Footer -->
+    <!-- <footer>
+        <div class="container container text-center pb-2 pt-4">
+            <p>Contact via <a href="mailto:occsparsclub@gmail.com">occsparsclub@gmail.com</a></p>
+            <p>
+            <a href="#">Back to top</a>
+            </p>
+        </div>
+    </footer>    -->
 
     <!-- jQuery CDN -->
     <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>

@@ -25,27 +25,24 @@ class ResultFilter(FilterSet):
         model = Project
         fields = ('title', 'author', 'mentor', 'tagline', 'year')
 
-class BrowseListView(ListView):
-    model = Project
-    serializer_class = ProjectSerializer
+class BrowseView(TemplateView):
     template_name = 'browse.html'
-    context_object_name = 'projects'
     #queryset = Project.objects.all()
 
-    filter_backends = (OrderingFilter, SearchFilter)
-    filter_class = ResultFilter
-    ordering_fields = ('year', 'title', 'author', 'mentor')
-    search_fields = ('title', 'author', 'mentor', 'tagline', 'year')
+    # filter_backends = (OrderingFilter, SearchFilter)
+    # filter_class = ResultFilter
+    # ordering_fields = ('year', 'title', 'author', 'mentor')
+    # search_fields = ('title', 'author', 'mentor', 'tagline', 'year')
 
-    def get_queryset(self):
-        queryset = Project.objects.all()
-        if 'q' in self.request.GET and self.request.GET['q']:
-            q = self.request.GET.get('q')
-            projects = queryset.filter(title__icontains=q) or queryset.filter(author__full_name__icontains=q) or queryset.filter(mentor__icontains=q) or queryset.filter(tagline__icontains=q)
-        else:
-            projects = queryset
-        print('DEBUG:',projects)
-        return projects
+    # def get_queryset(self):
+    #     queryset = Project.objects.all()
+    #     if 'q' in self.request.GET and self.request.GET['q']:
+    #         q = self.request.GET.get('q')
+    #         projects = queryset.filter(title__icontains=q) or queryset.filter(author__full_name__icontains=q) or queryset.filter(mentor__icontains=q) or queryset.filter(tagline__icontains=q)
+    #     else:
+    #         projects = queryset
+    #     print('DEBUG:',projects)
+    #     return projects
     
     # def get_context_data(self, **kwargs):
     #     context = super(BrowseListView, self).get_context_data(**kwargs)
@@ -103,46 +100,55 @@ class ContactPageView(TemplateView):
     template_name = 'contact.html'
     model = Project, Author
 
-def search(request):
-    if 'q' in request.GET and request.GET['q']:
-        q = request.GET['q']
-        projects = Project.objects.filter(Q(title__icontains=q) | Q(tagline__icontains=q) | Q(author__full_name__icontains=q) | Q(mentor__icontains=q))
-    else:
-        projects = Project.objects.all()
-        return render(request, 'browse.html', {'projects': projects})
-    return render(request, 'browse.html', {'projects': projects, 'query': q})
-        
-
-    
-
-
 # def search(request):
 #     if 'q' in request.GET and request.GET['q']:
 #         q = request.GET['q']
-#         s = request.GET['s']
-
-#         if s == 'all':
-#             projects = Project.objects.filter(title__icontains=q) or Project.objects.filter(tagline__icontains=q) or Project.objects.filter(author__full_name__icontains=q) or Project.objects.filter(mentor__icontains=q)
-#         elif s == 'title':
-#             projects = Project.objects.filter(title__icontains=q)         
-#         elif s == 'author':
-#             projects = Project.objects.filter(author__full_name__icontains=q)         
-#         elif s == 'mentor':
-#             projects = Project.objects.filter(mentor__icontains=q)         
-#         elif s == 'tagline':
-#             projects = Project.objects.filter(tagline__icontains=q)  
-#         else:
-#             projects = Project.objects.all()
+#         projects = Project.objects.filter(Q(title__icontains=q) | Q(tagline__icontains=q) | Q(author__full_name__icontains=q) | Q(mentor__icontains=q))
 #     else:
-#         return render(request, 'result.html')
+#         projects = Project.objects.all()
+#         return render(request, 'browse.html', {'projects': projects})
+#     return render(request, 'browse.html', {'projects': projects, 'query': q})
 
-#     if 'sort_by' in request.GET and request.GET['sort_by']:
-#         sort_by = request.GET.get('sort_by', '')
-#     else:
-#         sort_by = 'title'
+def search(request):
+    if 'q' in request.GET and request.GET['q']:
+        q = request.GET['q']
+        s = request.GET['s']
+    else:
+        q = ''
+        s = request.GET['s']
+        projects = Project.objects.filter(tagline__icontains=q)
+    if s == 'all':
+        title = Project.objects.filter(title__icontains=q)
+        tagline = Project.objects.filter(tagline__icontains=q) 
+        author = Project.objects.filter(author__full_name__icontains=q)
+        mentor = Project.objects.filter(mentor__icontains=q)
+        projects = title | tagline | author | mentor
+    elif s == 'title':
+        projects = Project.objects.filter(title__icontains=q)         
+    elif s == 'author':
+        projects = Project.objects.filter(author__full_name__icontains=q)         
+    elif s == 'mentor':
+        projects = Project.objects.filter(mentor__icontains=q)         
+    elif s == 'tagline':
+        projects = Project.objects.filter(tagline__icontains=q)  
+    
+    # else:
+    #     return render(request, 'result.html')
 
-#     Project.objects.order_by(sort_by)
-#     return render(request, 'result.html', {'projects': projects, 'query': q, 'order_by': sort_by})
+    # if 'sort_by' in request.GET and request.GET['sort_by']:
+    #     sort_by = request.GET.get('sort_by', '')
+    # else:
+    #     sort_by = 'title'
+
+    # Project.objects.order_by(sort_by)
+    
+    cat = request.GET.get('cat', '').split(',')
+    if (cat != ['']): 
+        temp = projects & Project.objects.filter(tagline__icontains=cat[0])
+        for c in cat:
+            temp = temp | (projects & Project.objects.filter(tagline__icontains=c))
+        projects = temp
+    return render(request, 'ajax_search.html', {'projects': projects})
         
 
     

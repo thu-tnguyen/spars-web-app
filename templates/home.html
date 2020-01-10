@@ -44,26 +44,25 @@
                 
             <!-- Search Form -->
             <form action="/browse/" method="get">
-                    <div class="form-group reduce-spacing px-3">
+                <div class="form-row px-3">
+                    <div class="form-group col-md-10 reduce-spacing">
                         <label for="searchInput"></label>
                         <input name="q" id="searchInput" type="text" placeholder="Search..." class="form-control custom-form shadow-lg" aria-label="Search">
                     </div>
-                    <!-- <input class="form-group mx-auto d-block btn btn-outline-warning py-2 mt-4" type="submit" value="Search"></input>
-
-                        <div class="form-group col-md-2 custom-form-sm custom-form">
-                            <label for="searchFieldSelect"></label>
-                            <select name="s" id="searchFieldSelect" class="form-control custom-form shadow-lg">
-                                <option selected value="all">All fields</option>
-                                <option value="title">Title</option>
-                                <option value="author">Author</option>
-                                <option value="mentor">Mentor</option>
-                                <option value="tagline">Tag</option>
-                                
-                            </select>
-                        </div> -->
-                    
+                    <div class="form-group col-md-2 custom-form">
+                        <label for="searchFieldSelect"></label>
+                        <select name="s" id="searchSelect" class="form-control custom-form shadow-lg">
+                            <option selected value="all">All fields</option>
+                            <option value="title">Title</option>
+                            <option value="author">Author</option>
+                            <option value="mentor">Mentor</option>
+                            <option value="tagline">Keywords</option>
+                            
+                        </select>
+                    </div>
+                </div>
             </form>
-            <div class="container pt-5">
+            <div class="container pt-4">
                 <a href="/browse/" class="underline-text text-light">or browse projects here</a>
             </div> <!-- END HOMECENTER -->
         </div>
