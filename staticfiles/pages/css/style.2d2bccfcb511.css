@@ -65,9 +65,6 @@ footer {
     font-weight: bold; 
 }
 
-#logo-search {
-  margin-top: 7rem;
-}
 
 #base-logo{
     width: 10rem;
@@ -125,7 +122,7 @@ footer {
     width: 800px;
     height: 400px;
     padding: none;
-    margin: 12rem 0 3rem 0;
+    margin: 10rem 0 5rem 0;
     text-align: center;
 }
 
@@ -346,9 +343,6 @@ display:block;
   .custom-container-2 {
     height: 62rem;
   }
-  #logo-search {
-    margin-top: 7rem;
-  }
 }
 
 @media (min-width: 768px) {
@@ -389,9 +383,7 @@ display:block;
     .home-img {
       max-height: 50%;
     }
-    #logo-search {
-      margin-top: 9rem;
-    }
+
   }
 
   @media (min-width: 838px) {

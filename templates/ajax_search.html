@@ -21,8 +21,11 @@
           {% for project in projects %}
             <tr>
               <td>
-              {% for author in project.author.all %}
-                  {{ author.full_name }}
+                {{ project.author.all.0.full_name }}
+                {% for author in project.author.all %}
+                    {% if forloop.counter > 1 %}
+                    , {{ author.full_name }}
+                    {% endif %}
                 {% endfor %}
               </td>
               <td><a href="{% url 'rsprojects' project.ext_id %}">{{ project.title }}</a></td>

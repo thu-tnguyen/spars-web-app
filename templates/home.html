@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
     <!-- Title -->
-    <title>Archive Project | Student Project and Research Symposium Club</title>
+    <title>Archiver Project | Student Project and Research Symposium Club</title>
 
 </head>
 
@@ -34,37 +34,39 @@
         </nav>
       </div>
 
-    <div style="height: 600px;">
+    <div style="height: 620px;">
         <img class="cover-bg img-fluid" src="{% static 'pages/images/bg_1.png' %}">
 
         <!-- Search -->
-        <div class="home-center home-gray-block" style="opacity: .59; "></div>
-        <div class="home-center col mx-auto d-block mt-5 pt-5">
-            <img class="img-fluid mx-auto d-block mb-4 pt-5" src="{% static 'pages/images/logo_1.png' %}" alt="logo" style="max-height: 8.5rem; max-width: auto;">
-                
-            <!-- Search Form -->
-            <form action="/browse/" method="get">
-                <div class="form-row px-3">
-                    <div class="form-group col-md-10 reduce-spacing">
-                        <label for="searchInput"></label>
-                        <input name="q" id="searchInput" type="text" placeholder="Search..." class="form-control custom-form shadow-lg" aria-label="Search">
+        <div>
+            <div class="home-center home-gray-block" style="opacity: .59; "></div>
+            <div class="home-center col mx-auto d-block" id="logo-search">
+                <img class="img-fluid mx-auto d-block mb-4 pt-5" src="{% static 'pages/images/logo_1.png' %}" alt="logo" style="max-height: 8.5rem; max-width: auto;">
+                    
+                <!-- Search Form -->
+                <form action="/browse/" method="get">
+                    <div class="form-row px-3">
+                        <div class="form-group col-md-10 reduce-spacing">
+                            <label for="searchInput"></label>
+                            <input name="q" id="searchInput" type="text" placeholder="Search..." class="form-control custom-form shadow-lg" aria-label="Search">
+                        </div>
+                        <div class="form-group col-md-2 custom-form">
+                            <label for="searchFieldSelect"></label>
+                            <select name="s" id="searchSelect" class="form-control custom-form shadow-lg">
+                                <option selected value="all">All fields</option>
+                                <option value="title">Title</option>
+                                <option value="author">Author</option>
+                                <option value="mentor">Mentor</option>
+                                <option value="tagline">Keywords</option>
+                                
+                            </select>
+                        </div>
                     </div>
-                    <div class="form-group col-md-2 custom-form">
-                        <label for="searchFieldSelect"></label>
-                        <select name="s" id="searchSelect" class="form-control custom-form shadow-lg">
-                            <option selected value="all">All fields</option>
-                            <option value="title">Title</option>
-                            <option value="author">Author</option>
-                            <option value="mentor">Mentor</option>
-                            <option value="tagline">Keywords</option>
-                            
-                        </select>
-                    </div>
-                </div>
-            </form>
-            <div class="container pt-4">
-                <a href="/browse/" class="underline-text text-light">or browse projects here</a>
-            </div> <!-- END HOMECENTER -->
+                </form>
+                <div class="container pt-4">
+                    <a href="/browse/" class="underline-text text-light">or browse projects here</a>
+                </div> <!-- END HOMECENTER -->
+            </div>
         </div>
 
         <a href="#about" class="mx-auto d-block btn btn-xl btn-circle btn-light shadow-lg mt">

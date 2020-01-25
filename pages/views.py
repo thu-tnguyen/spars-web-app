@@ -6,24 +6,10 @@ from django.urls import reverse
 from pages.models import Project, Author
 
 from django.db.models import Q
-from pages.serializers import ProjectSerializer
-from rest_framework.filters import OrderingFilter, SearchFilter
-from django_filters import FilterSet
-from django_filters import rest_framework as filters
 
 class HomePageView(TemplateView):
     template_name = 'home.html'
     model = Project, Author
-
-class ResultFilter(FilterSet):
-    title = filters.CharFilter('title')
-    author = filters.CharFilter('author__full_name')
-    mentor = filters.CharFilter('mentor')
-    tagline = filters.CharFilter('tagline')
-    year = filters.CharFilter('year')
-    class Meta:
-        model = Project
-        fields = ('title', 'author', 'mentor', 'tagline', 'year')
 
 class BrowseView(TemplateView):
     template_name = 'browse.html'
@@ -34,53 +20,40 @@ class BrowseView(TemplateView):
     # ordering_fields = ('year', 'title', 'author', 'mentor')
     # search_fields = ('title', 'author', 'mentor', 'tagline', 'year')
 
-    # def get_queryset(self):
-    #     queryset = Project.objects.all()
-    #     if 'q' in self.request.GET and self.request.GET['q']:
-    #         q = self.request.GET.get('q')
-    #         projects = queryset.filter(title__icontains=q) or queryset.filter(author__full_name__icontains=q) or queryset.filter(mentor__icontains=q) or queryset.filter(tagline__icontains=q)
-    #     else:
-    #         projects = queryset
-    #     print('DEBUG:',projects)
-    #     return projects
+    def get_queryset(self):
+        if 'q' in self.GET and self.GET['q']:
+            q = self.GET['q']
+            s = self.GET['s']
+        else:
+            q = ''
+            s = self.GET['s']
+            projects = Project.objects.filter(tagline__icontains=q)
+        if s == 'all':
+            title = Project.objects.filter(title__icontains=q)
+            tagline = Project.objects.filter(tagline__icontains=q) 
+            author = Project.objects.filter(author__full_name__icontains=q)
+            mentor = Project.objects.filter(mentor__icontains=q)
+            projects = title | tagline | author | mentor
+        elif s == 'title':
+            projects = Project.objects.filter(title__icontains=q)         
+        elif s == 'author':
+            projects = Project.objects.filter(author__full_name__icontains=q)         
+        elif s == 'mentor':
+            projects = Project.objects.filter(mentor__icontains=q)         
+        elif s == 'tagline':
+            projects = Project.objects.filter(tagline__icontains=q)  
+        cat = self.GET.get('cat', '').split(',')
+        if (cat != ['']): 
+            temp = projects & Project.objects.filter(tagline__icontains=cat[0])
+            for c in cat:
+                temp = temp | (projects & Project.objects.filter(tagline__icontains=c))
+            projects = temp
+        return render(self, 'ajax_search.html', {'projects': projects})
     
     # def get_context_data(self, **kwargs):
     #     context = super(BrowseListView, self).get_context_data(**kwargs)
     #     search_query = self.get_queryset()
     #     return context
-
-class ResultListView(ListView):
-    model = Project
-    serializer_class = ProjectSerializer
-    
-    queryset = Project.objects.all()
-    template_name = 'browser.html'
-
-    filter_backends = (OrderingFilter, SearchFilter)
-    filter_class = ResultFilter
-    ordering_fields = ('year', 'title', 'author', 'mentor')
-    search_fields = ('title', 'author', 'mentor', 'tagline', 'year')
-
-    # def get_queryset(self):
-    #     queryset = Project.objects.all()
-    #     q = self.request.GET.get('q')
-    #     s = self.request.GET.get('s')
-    #     if s == 'all':
-    #         projects = queryset.filter(title__icontains=q) and queryset.filter(author__full_name__icontains=q) and queryset.filter(mentor__icontains=q) and queryset.filter(tagline__icontains=q)
-    #     elif s == 'title':
-    #         projects = queryset.filter(title__icontains=q)         
-    #     elif s == 'author':
-    #         projects = queryset.filter(author__full_name__icontains=q)         
-    #     elif s == 'mentor':
-    #         projects = queryset.filter(mentor__icontains=q)         
-    #     elif s == 'tagline':
-    #         projects = queryset.filter(tagline__icontains=q)
-    #     return projects
-    
-    def get_context_data(self, **kwargs):
-        context = super(ResultListView, self).get_context_data(**kwargs)
-        search_query = self.get_queryset()
-        return context
 
 
 class ProjectDetailView(DetailView):
@@ -99,15 +72,6 @@ class AlumniTreePageView(TemplateView):
 class ContactPageView(TemplateView):
     template_name = 'contact.html'
     model = Project, Author
-
-# def search(request):
-#     if 'q' in request.GET and request.GET['q']:
-#         q = request.GET['q']
-#         projects = Project.objects.filter(Q(title__icontains=q) | Q(tagline__icontains=q) | Q(author__full_name__icontains=q) | Q(mentor__icontains=q))
-#     else:
-#         projects = Project.objects.all()
-#         return render(request, 'browse.html', {'projects': projects})
-#     return render(request, 'browse.html', {'projects': projects, 'query': q})
 
 def search(request):
     if 'q' in request.GET and request.GET['q']:

@@ -1,7 +1,14 @@
 $(function() {
     checkedCategories = [];
-    q = '';
-    s = 'all'; // fix this
+    queryList = window.location.search.split('&');
+    if (queryList.length > 1) {
+        q = queryList[0].substring(3).replace(/\+/g, ' ').trim();
+        s = queryList[1].substring(2);
+    } else {
+        q = '';
+        s = 'all'
+    }
+
     $(".categoricalCheck").click(function(){
         checkedCategories = [];
         $('input:checked').each(function(){
@@ -10,17 +17,17 @@ $(function() {
             } 
         });
         console.log('curr: ' + checkedCategories);
-        $.ajax({ data: getData() });
+        getData(s, q, checkedCategories);
     });
-    $.ajax({ data: getData() }); // load initial browse page
+    getData(s, q, checkedCategories); // load initial browse page
 
     $('#searchInput').keyup(function() {
         q = $('#searchInput').val();
-        $.ajax({ data: getData() });
+        getData(s, q, checkedCategories);
     });
     $('#searchSelect').change(function() {
         s = $('#searchSelect').val();
-        $.ajax({ data: getData() });
+        
     });
 });
 
@@ -37,18 +44,16 @@ $.ajaxSetup({
         traditional: true,
 });
 
-function getData() {
-    // alert(checkedCategories);
-    return {
-        'q' : q,
-        's' : s,
-        'cat' : checkedCategories.toString(),
-    };
+var delayTimer;
+function getData(s, q, checkedCategories) {
+    clearTimeout(delayTimer);
+    delayTimer = setTimeout(function() {
+        $.ajax({ 
+            data: {
+            'q' : q,
+            's' : s,
+            'cat' : checkedCategories.toString(),
+            },
+        });
+    }, 200);
 }
-
-// remote: {
-//     url: "{% url 'browse' %}",
-//     replace: function(url, query) {
-//         return url + "?q=" + query;
-//     }
-// },
