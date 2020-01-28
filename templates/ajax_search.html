@@ -1,3 +1,4 @@
+{% load string_format %}
 {% if projects %}
     <div class="row align-items-center py-2">
       <div class="col-auto mr-auto"><p>{{ projects.count }} project(s)</p></div>
@@ -5,7 +6,7 @@
     
     <!-- Table -->
     <div class="table-responsive">
-      <table class="table table-striped table-responsive">
+      <table class="table table-striped table-responsive table-hover">
         <thead>
           <tr>
               <th scope="col" style="vertical-align: middle;"><a>Author(s)</a></th>
@@ -21,10 +22,11 @@
           {% for project in projects %}
             <tr>
               <td>
-                {{ project.author.all.0.full_name }}
+                <a href="/browse/?q={{ project.author.all.0.full_name|string_format }}&s=author">
+                  {{ project.author.all.0.full_name }}</a>
                 {% for author in project.author.all %}
                     {% if forloop.counter > 1 %}
-                    , {{ author.full_name }}
+                    , <a href="/browse/?q={{ author.full_name|string_format }}&s=author">{{ author.full_name }}</a>
                     {% endif %}
                 {% endfor %}
               </td>

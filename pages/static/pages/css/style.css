@@ -52,8 +52,6 @@ nav a:hover, th a:hover, td a:hover{
 td{
     padding-left: 7.5px;
     padding-right: 7.5px;
-    height: 40px;
-    width: 15rem;
 }
 
 footer {
@@ -143,6 +141,10 @@ footer {
   -o-background-size: cover;
   background-size: cover; 
   background-size: 100% 100%;
+}
+
+.gray{
+  background-color: #efefef;
 }
 
 .bg-lite{

@@ -41,7 +41,7 @@ class Project(models.Model):
     abstract = models.TextField()
     paper = models.TextField(blank = True)
     cited_source = models.TextField(blank = True)
-    remote_asset = models.FilePathField(path="/home/images", match="foo.*", recursive=True, blank = True)
+    drive_folder_link = models.CharField(max_length=255, blank = True)
     
     ext_id = models.UUIDField(default=uuid.uuid4, editable=False)
     ### MODEL RELATIONSHIP(S)

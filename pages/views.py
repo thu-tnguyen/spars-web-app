@@ -86,6 +86,7 @@ def search(request):
         tagline = Project.objects.filter(tagline__icontains=q) 
         author = Project.objects.filter(author__full_name__icontains=q)
         mentor = Project.objects.filter(mentor__icontains=q)
+
         projects = title | tagline | author | mentor
     elif s == 'title':
         projects = Project.objects.filter(title__icontains=q)         
@@ -95,24 +96,11 @@ def search(request):
         projects = Project.objects.filter(mentor__icontains=q)         
     elif s == 'tagline':
         projects = Project.objects.filter(tagline__icontains=q)  
-    
-    # else:
-    #     return render(request, 'result.html')
-
-    # if 'sort_by' in request.GET and request.GET['sort_by']:
-    #     sort_by = request.GET.get('sort_by', '')
-    # else:
-    #     sort_by = 'title'
-
-    # Project.objects.order_by(sort_by)
-    
     cat = request.GET.get('cat', '').split(',')
     if (cat != ['']): 
         temp = projects & Project.objects.filter(tagline__icontains=cat[0])
         for c in cat:
             temp = temp | (projects & Project.objects.filter(tagline__icontains=c))
         projects = temp
-    return render(request, 'ajax_search.html', {'projects': projects})
-        
-
+    return render(request, 'ajax_search.html', {'projects': projects.distinct()})
     

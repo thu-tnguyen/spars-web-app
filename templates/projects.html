@@ -10,12 +10,14 @@
     {% extends 'base.html' %}
     {% block content %}
     <div>
-        <div class="container custom-container">
-        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom border-dark">
-            <h4>{{ object.title }}</h4>
+        <div class="container pt-5 px-3">
+        <div class="container px-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-4 mb-3 border-bottom border-secondary">
+                <h4>{{ object.title }}</h4>
+            </div>
         </div>
                 
-            <table class="container">
+            <table class="container table table-borderless table-sm mt-4">
                 <tr class="row">
                     <td class="px-5 col-4"><strong>Division: </strong></td>
                     <td class="col-8">{{ object.get_division_display }}</td>
@@ -48,13 +50,22 @@
                     <td class="px-5 col-4"><strong>Tags: </strong></td>
                     <td class="col-8">{{ object.tagline }}</td>
                 </tr>
+                <tr class="row">
+                    <td class="px-5 col-4"><strong>Slides/poster: </strong></td>
+                    <td class="col-8"><a href="{{ object.drive_folder_link }}">See more</a></td>
+                </tr>
+                <tr class="row">
+                    <td class="px-5 col-12">
+                        <strong>Abstract:</strong>
+                        <p>{{ object.abstract|linebreaks }}</p>
+                    </td>
+                </tr>
             </table>
             
-            <img src="" alt=""></img>
             <!-- <iframe class="col mx-auto d-block"  width="640" height="360" style="padding: 0" src="https://www.youtube.com/watch?v=wS5rn2ZLttU"></iframe> -->
-            <div class="container my-5">
-                <strong>Abstract:</strong>
-                <p class="my-3">{{ object.abstract }}</p>
+            <div class="container mx-3 my-5">
+                
+                <p class="my-3"></p>
             </div>
 
         </div>

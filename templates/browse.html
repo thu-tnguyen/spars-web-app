@@ -8,11 +8,18 @@
     <title>Archiver Project | Browse Projects</title>
 </head>
 <body class="row">
-    {% block content %}
- 
+  {% block content %}
+  <!-- SCREEN RESOLUTION WARNING  -->
+  <div class="alert alert-warning alert-dismissible fade show fixed-top" role="alert">
+    <strong>For best experience</strong> Use latest version of Firefox, Chrome or Safari and screen resolution 1024x768 or higher.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div> <!-- END SCREEN RESOLUTION WARNING  -->
+
+  <!-- Sidebar -->
   <div class="wrapper col-md-3">
-    <!-- Sidebar -->
-    <nav id="sidebar">
+    <nav id="sidebar" class="border-right gray">
         <form action="/browse/" method="get">
           
           <ul class="list-unstyled components sidebar-sticky pt-1 mt-4">
@@ -22,60 +29,61 @@
             
             <!-- Business & Computing Department  -->
             <li class="pl-3">
-              <a href="#pageSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Business & Computing</a>
+              <a href="#pageSubmenu1" data-toggle="collapse" aria-expanded="false">Business & Computing</a>
               <ul class="collapse list-unstyled pl-3" id="pageSubmenu1">
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="accounting">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="accounting" value="accounting">
                       <label class="form-check-label " for="accounting">Accounting</label>
                   </div>                    
                 </li>
 
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="business">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="business" value="business">
                       <label class="form-check-label " for="business">Business</label>
                   </div>                    
                 </li>
 
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="computer information systems">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="computer information systems" 
+                        value="computer information systems">
                       <label class="form-check-label " for="computer information systems">Computer Information Systems</label>
                   </div>                    
                 </li>
 
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="computer science">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="computer science" value="computer science">
                       <label class="form-check-label " for="computer science">Computer Science</label>
                   </div>                    
                 </li>
 
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="leadership studies">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="leadership studies" value="leadership studies">
                       <label class="form-check-label " for="leadership studies">Leadership Studies</label>
                   </div>                    
                 </li>
 
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="management">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="management" value="management">
                       <label class="form-check-label " for="management">Management</label>
                   </div>                    
                 </li>
 
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="marketing">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="marketing" value="marketing">
                       <label class="form-check-label " for="marketing">Marketing</label>
                   </div>                    
                 </li>
 
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="real estate">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="real estate" value="real estate">
                       <label class="form-check-label " for="real estate">Real Estate</label>
                   </div>                    
                 </li>
@@ -83,25 +91,25 @@
             </li>
             <!-- Consumer & Health Sciences Department  -->
             <li class="pl-3">
-              <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Consumer & Health Sciences</a>
+              <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false">Consumer & Health Sciences</a>
               <ul class="collapse list-unstyled pl-3" id="pageSubmenu2">
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="allied health">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="allied health" value="allied health">
                       <label class="form-check-label " for="allied health">Allied Health</label>
                   </div>                    
                 </li>
 
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="family & consumer sciences">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="family & consumer sciences" value="family & consumer sciences">
                       <label class="form-check-label " for="family & consumer sciences">Family & Consumer Sciences</label>
                   </div>                    
                 </li>
 
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="hospitality">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="hospitality" value="hospitality">
                       <label class="form-check-label " for="hospitality">Hospitality</label>
                   </div>                    
                 </li>
@@ -109,11 +117,11 @@
             </li>
             <!-- Kinesiology & Athletics Department  -->
             <li class="pl-3">
-              <a href="#pageSubmenu3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Kinesiology & Athletics</a>
+              <a href="#pageSubmenu3" data-toggle="collapse" aria-expanded="false">Kinesiology & Athletics</a>
               <ul class="collapse list-unstyled pl-3" id="pageSubmenu3">
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="kinesiology & athletics">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="kinesiology & athletics" value="kinesiology & athletics">
                       <label class="form-check-label " for="kinesiology & athletics">Kinesiology & Athletics</label>
                   </div>                    
                 </li>
@@ -121,23 +129,23 @@
             </li>
             <!-- Literature & Languages Department  -->
             <li class="pl-3">
-              <a href="#pageSubmenu4" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Literature & Languages</a>
+              <a href="#pageSubmenu4" data-toggle="collapse" aria-expanded="false">Literature & Languages</a>
               <ul class="collapse list-unstyled pl-3" id="pageSubmenu4">
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="communication studies">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="communication studies" value="communication studies">
                       <label class="form-check-label " for="communication studies">Communication Studies</label>
                   </div>                    
                 </li>
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="english">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="english" value="english">
                       <label class="form-check-label " for="english">English</label>
                   </div>                    
                 </li>
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="world languages">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="world languages" value="world languages">
                       <label class="form-check-label " for="world languages">World Languages</label>
                   </div>                    
                 </li>
@@ -145,71 +153,71 @@
             </li>
             <!-- Mathematics & Sciences Department  -->
             <li class="pl-3">
-              <a href="#pageSubmenu5" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Mathematics & Sciences</a>
+              <a href="#pageSubmenu5" data-toggle="collapse" aria-expanded="false">Mathematics & Sciences</a>
               <ul class="collapse list-unstyled pl-3" id="pageSubmenu5">
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="astronomy">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="astronomy" value="astronomy">
                       <label class="form-check-label " for="astronomy">Astronomy</label>
                   </div>                    
                 </li>
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="biological sciences">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="biological sciences" value="biological sciences">
                       <label class="form-check-label " for="biological sciences">Biological Sciences</label>
                   </div>                    
                 </li>
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="chemistry">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="chemistry" value="chemistry">
                       <label class="form-check-label " for="chemistry">Chemistry</label>
                   </div>                    
                 </li>
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="ecology">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="ecology" value="ecology">
                       <label class="form-check-label " for="ecology">Ecology</label>
                   </div>                    
                 </li>
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="engineering">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="engineering" value="engineering">
                       <label class="form-check-label " for="engineering">Engineering</label>
                   </div>                    
                 </li>
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="geology">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="geology" value="geology">
                       <label class="form-check-label " for="geology">Geology</label>
                   </div>                    
                 </li>
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="horticulture">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="horticulture" value="horticulture">
                       <label class="form-check-label " for="horticulture">Horticulture</label>
                   </div>                    
                 </li>
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="marine science">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="marine science" value="marine science">
                       <label class="form-check-label " for="marine science">Marine Science</label>
                   </div>                    
                 </li>
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="mathematics">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="mathematics" value="mathematics">
                       <label class="form-check-label " for="mathematics">Mathematics</label>
                   </div>                    
                 </li>
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="natural science">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="natural science" value="natural science">
                       <label class="form-check-label " for="natural science">Natural Science</label>
                   </div>                    
                 </li>
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="physics">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="physics" value="physics">
                       <label class="form-check-label " for="physics">Physics</label>
                   </div>                    
                 </li>
@@ -217,83 +225,83 @@
             </li>
             <!-- Social & Behavioral Sciences Department  -->
             <li class="pl-3">
-              <a href="#pageSubmenu6" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Social & Behavioral Sciences</a>
+              <a href="#pageSubmenu6" data-toggle="collapse" aria-expanded="false">Social & Behavioral Sciences</a>
               <ul class="collapse list-unstyled pl-3" id="pageSubmenu6">
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="anthropology">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="anthropology" value="anthropology">
                       <label class="form-check-label " for="anthropology">Anthropology</label>
                   </div>                    
                 </li>
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="economics">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="economics" value="economics">
                       <label class="form-check-label " for="economics">Economics</label>
                   </div>                    
                 </li>
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="ethic studies">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="ethic studies" value="ethic studies">
                       <label class="form-check-label " for="ethic studies">Ethic Studies</label>
                   </div>                    
                 </li>
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="gender studies">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="gender studies" value="gender studies">
                       <label class="form-check-label " for="gender studies">Gender Studies</label>
                   </div>                    
                 </li>
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="geography">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="geography" value="geography">
                       <label class="form-check-label " for="geography">Geography</label>
                   </div>                    
                 </li>
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="global studies">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="global studies" value="global studies">
                       <label class="form-check-label " for="global studies">Global Studies</label>
                   </div>                    
                 </li>
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="history">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="history" value="history">
                       <label class="form-check-label " for="history">History</label>
                   </div>                    
                 </li>
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="humanities">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="humanities" value="humanities">
                       <label class="form-check-label " for="humanities">Humanities</label>
                   </div>                    
                 </li>
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="philosophy">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="philosophy" value="philosophy">
                       <label class="form-check-label " for="philosophy">Philosophy</label>
                   </div>                    
                 </li>
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="political science">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="political science" value="political science">
                       <label class="form-check-label " for="political science">Political Science</label>
                   </div>                    
                 </li>
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="psychology">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="psychology" value="psychology">
                       <label class="form-check-label " for="psychology">Psychology</label>
                   </div>                    
                 </li>
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="religious studies">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="religious studies" value="religious studies">
                       <label class="form-check-label " for="religious studies">Religious Studies</label>
                   </div>                    
                 </li>
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="sociology">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="sociology" value="sociology">
                       <label class="form-check-label " for="sociology">Sociology</label>
                   </div>                    
                 </li>
@@ -301,53 +309,58 @@
             </li>
             <!-- Technology Department  -->
             <li class="pl-3">
-              <a href="#pageSubmenu7" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Technology</a>
+              <a href="#pageSubmenu7" data-toggle="collapse" aria-expanded="false">Technology</a>
               <ul class="collapse list-unstyled pl-3" id="pageSubmenu7">
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="airframe & powerplant technology">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="airframe & powerplant technology" 
+                        value="airframe & powerplant technology">
                       <label class="form-check-label " for="airframe & powerplant technology">Airframe & Powerplant Technology</label>
                   </div>                    
                 </li>
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="architectural technology">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="architectural technology"
+                        value="architectural technology">
                       <label class="form-check-label " for="architectural technology">Architectural Technology</label>
                   </div>                    
                 </li>
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="aviation science">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="aviation science" value="aviation science">
                       <label class="form-check-label " for="aviation science">Aviation Science</label>
                   </div>                    
                 </li>
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="construction technology">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="construction technology" value="construction technology">
                       <label class="form-check-label " for="construction technology">Construction Technology</label>
                   </div>                    
                 </li>
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="electronics technology">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="electronics technology" value="electronics technology">
                       <label class="form-check-label " for="electronics technology">Electronics Technology</label>
                   </div>                    
                 </li>
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="heating & air conditioning technology">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="heating & air conditioning technology"
+                        value="heating & air conditioning technology">
                       <label class="form-check-label " for="heating & air conditioning technology">Heating & Air Conditioning Technology</label>
                   </div>                    
                 </li>
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="manufacturing technology">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="manufacturing technology"
+                      value="manufacturing technology">
                       <label class="form-check-label " for="manufacturing technology">Manufacturing Technology</label>
                   </div>                    
                 </li>
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="welding technology">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="welding technology"
+                        value="welding technology">
                       <label class="form-check-label " for="welding technology">Welding Technology</label>
                   </div>                    
                 </li>
@@ -355,48 +368,51 @@
             </li>
             <!-- Visual & Performing Arts Department  -->
             <li class="pl-3">
-              <a href="#pageSubmenu8" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Visual & Performing Arts
+              <a href="#pageSubmenu8" data-toggle="collapse" aria-expanded="false">Visual & Performing Arts
               </a>
               <ul class="collapse list-unstyled pl-3" id="pageSubmenu8">
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="art">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="art" value="art">
                       <label class="form-check-label " for="art">Art</label>
                   </div>                    
                 </li>
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="dance">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="dance" value="dance">
                       <label class="form-check-label " for="dance">Dance</label>
                   </div>                    
                 </li>
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="digital media arts & design">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="digital media arts & design"
+                        value="digital media arts & design">
                       <label class="form-check-label " for="digital media arts & design">Digital Media Arts & Design</label>
                   </div>                    
                 </li>
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="film & television">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="film & television" value="film & television">
                       <label class="form-check-label " for="film & television">Film & Television</label>
                   </div>                    
                 </li>
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="music">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="music" value="music">
                       <label class="form-check-label " for="music">Music</label>
                   </div>                    
                 </li>
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="photography">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="photography"
+                        value="photography">
                       <label class="form-check-label " for="photography">Photography</label>
                   </div>                    
                 </li>
                 <li>
                   <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input categoricalCheck" value="theatre arts">
+                      <input type="checkbox" class="form-check-input categoricalCheck" id="theatre arts"
+                        value="theatre arts">
                       <label class="form-check-label " for="theatre arts">Theatre Arts</label>
                   </div>                    
                 </li>
@@ -405,10 +421,10 @@
 
       </form>
     </nav>
-  </div>
+  </div> <!-- END Sidebar -->
   
   <!-- Main -->
-<main role="main" class="col-md-9 ml-sm-auto px-4 pt-3">
+  <main role="main" class="col-md-9 ml-sm-auto px-4 pt-3">
     <div class="row">
       <div class="col mr-auto pt-4">
         <p>Browse projects</p>
@@ -478,13 +494,13 @@
         display: block;
         color: #606060;
     }
-    /* #sidebar ul li a:hover {
-        color: #fff;
-        background: #efb422;
-    } */
+    #sidebar ul li a:hover {
+        font-weight: 600;
+    }
 
     #sidebar ul li.active > a, a[aria-expanded="true"] {
         color: #606060;
+        font-weight: 600;
     }
     ul ul a, label {
         font-size: 0.9em !important;
@@ -495,9 +511,7 @@
 
     a[data-toggle="collapse"] {
         position: relative;
-    }
-
-    .dropdown-toggle::after {
+    :after {
         display: block;
         position: absolute;
         top: 50%;
