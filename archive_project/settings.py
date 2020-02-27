@@ -78,17 +78,6 @@ WSGI_APPLICATION = 'archive_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'd1hsbog75vp99o',
-#         'USER': 'ssofjnfgrdinom',
-#         'PASSWORD': '4441698daec8a28fae3a814ce616626b6ebaf437f8127c466c0c0f111daa42e3',
-#         'HOST': 'ec2-54-197-232-203.compute-1.amazonaws.com',
-#         'PORT': '5432',
-#     }
-# }
-
 # Database setting for localhost
 DATABASES = {
     'default': {

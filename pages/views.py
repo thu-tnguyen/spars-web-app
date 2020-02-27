@@ -8,55 +8,20 @@ from pages.models import Project, Author
 from django.db.models import Q
 
 class HomePageView(TemplateView):
+    """View to display Home Page"""
     template_name = 'home.html'
     model = Project, Author
 
 class BrowseView(TemplateView):
+    """View to display Browse Page"""
     template_name = 'browse.html'
-    #queryset = Project.objects.all()
-
-    # filter_backends = (OrderingFilter, SearchFilter)
-    # filter_class = ResultFilter
-    # ordering_fields = ('year', 'title', 'author', 'mentor')
-    # search_fields = ('title', 'author', 'mentor', 'tagline', 'year')
-
     def get_queryset(self):
-        if 'q' in self.GET and self.GET['q']:
-            q = self.GET['q']
-            s = self.GET['s']
-        else:
-            q = ''
-            s = self.GET['s']
-            projects = Project.objects.filter(tagline__icontains=q)
-        if s == 'all':
-            title = Project.objects.filter(title__icontains=q)
-            tagline = Project.objects.filter(tagline__icontains=q) 
-            author = Project.objects.filter(author__full_name__icontains=q)
-            mentor = Project.objects.filter(mentor__icontains=q)
-            projects = title | tagline | author | mentor
-        elif s == 'title':
-            projects = Project.objects.filter(title__icontains=q)         
-        elif s == 'author':
-            projects = Project.objects.filter(author__full_name__icontains=q)         
-        elif s == 'mentor':
-            projects = Project.objects.filter(mentor__icontains=q)         
-        elif s == 'tagline':
-            projects = Project.objects.filter(tagline__icontains=q)  
-        cat = self.GET.get('cat', '').split(',')
-        if (cat != ['']): 
-            temp = projects & Project.objects.filter(tagline__icontains=cat[0])
-            for c in cat:
-                temp = temp | (projects & Project.objects.filter(tagline__icontains=c))
-            projects = temp
-        return render(self, 'ajax_search.html', {'projects': projects})
-    
-    # def get_context_data(self, **kwargs):
-    #     context = super(BrowseListView, self).get_context_data(**kwargs)
-    #     search_query = self.get_queryset()
-    #     return context
-
+        """Fetch queryset and pass to `ajax_search.html`. Taking in query, search-by terms,
+        (optionally categories using Sidebar). Filter using `icontanins`."""
+        return search(self)
 
 class ProjectDetailView(DetailView):
+    """View to display project details"""
     template_name = 'projects.html'
     context_object_name = 'project'
     model = Project
@@ -65,15 +30,9 @@ class ProjectDetailView(DetailView):
     slug_field = 'ext_id'
     slug_url_kwarg = 'ext_id'
 
-class AlumniTreePageView(TemplateView):
-    template_name = 'alumni_tree.html'
-    model = Project, Author
-
-class ContactPageView(TemplateView):
-    template_name = 'contact.html'
-    model = Project, Author
-
 def search(request):
+    """Fetch queryset and pass to `ajax_search.html`. Taking in query, search-by terms,
+    (optionally categories using Sidebar). Filter using `icontanins`."""
     if 'q' in request.GET and request.GET['q']:
         q = request.GET['q']
         s = request.GET['s']

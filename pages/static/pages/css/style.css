@@ -103,7 +103,6 @@ footer {
 }
 
 /* Customized styling in Home page */
-
 .reduce-spacing{
     margin-bottom: -1rem;
 }
@@ -158,11 +157,6 @@ footer {
   background-size: cover; 
   background-size: 100% 100%;
 }
-
-/* Browse page */
-
-
-/* Browse page end */
 
 .cover-bg {
   /* Set rules to fill background */
@@ -327,8 +321,58 @@ footer {
     font-size: .75rem;
     text-transform: uppercase;
   }
-  
+  #sidebar.active {
+    margin-left: -250px;
+  }
+      
+  a:hover, a:focus {
+      color: inherit;
+      text-decoration: none;
+      transition: all 0.3s;
+  }
 
+  #sidebar .sidebar-header {
+      padding: 20px;
+  }
+
+  #sidebar ul.components {
+      padding: 20px 0;
+      /* border-bottom: 1px solid #47748b; */
+  }
+
+  #sidebar ul p {
+      padding: 10px;
+  }
+
+  #sidebar ul li a {
+      padding: 10px;
+      font-size: 0.9rem;
+      display: block;
+      color: #606060;
+  }
+  #sidebar ul li a:hover {
+      font-weight: 600;
+  }
+
+  #sidebar ul li.active > a, a[aria-expanded="true"] {
+      color: #606060;
+      font-weight: 600;
+  }
+  ul ul a, label {
+      font-size: 0.9em !important;
+      padding-left: 8px !important;
+  }
+
+  a[data-toggle="collapse"] {
+      position: relative;
+  :after {
+      display: block;
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+  }
+  
 /* Bootstrap override */
 .navbar-toggle {
 display:block; 
@@ -411,6 +455,12 @@ display:block;
     }
     .custom-card-1 {
       height: 40rem;
+    }
+    #sidebar {
+        margin-left: -250px;
+    }
+    #sidebar.active {
+        margin-left: 0;
     }
   }
 

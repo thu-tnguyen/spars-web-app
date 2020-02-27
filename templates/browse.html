@@ -8,6 +8,7 @@
     <title>Archiver Project | Browse Projects</title>
 </head>
 <body class="row">
+  {% load static %}
   {% block content %}
   <!-- SCREEN RESOLUTION WARNING  -->
   <div class="alert alert-warning alert-dismissible fade show fixed-top" role="alert">
@@ -418,7 +419,6 @@
                 </li>
               </ul>
             </li>
-
       </form>
     </nav>
   </div> <!-- END Sidebar -->
@@ -430,145 +430,38 @@
         <p>Browse projects</p>
       </div>
       <div class="col-auto">
-            <!-- Search Form -->
-            <form action="/search/" method="get">
-              <div class="form-row px-3">
-                  <div class="form-group col-8 reduce-spacing">
-                      <label for="searchInput"></label>
-                      <input name="q" id="searchInput" type="text" placeholder="Search..." class="form-control form-control-sm" aria-label="Search">
-                  </div>
-                  <div class="form-group col-4">
-                      <label for="searchSelect"></label>
-                      <select name="s" id="searchSelect" class="form-control form-control-sm">
-                          <option selected value="all">All fields</option>
-                          <option value="title">Title</option>
-                          <option value="author">Author</option>
-                          <option value="mentor">Mentor</option>
-                          <option value="tagline">Keywords</option>
-                          
-                      </select>
-                  </div>
-              </div>
-            </form>
+          <!-- Search Form -->
+          <form action="/search/" method="get">
+            <div class="form-row px-3">
+                <div class="form-group col-8 reduce-spacing">
+                    <label for="searchInput"></label>
+                    <input name="q" id="searchInput" type="text" placeholder="Search..." class="form-control form-control-sm" aria-label="Search">
+                </div>
+                <div class="form-group col-4">
+                    <label for="searchSelect"></label>
+                    <select name="s" id="searchSelect" class="form-control form-control-sm">
+                        <option selected value="all">All fields</option>
+                        <option value="title">Title</option>
+                        <option value="author">Author</option>
+                        <option value="mentor">Mentor</option>
+                        <option value="tagline">Keywords</option>
+                        
+                    </select>
+                </div>
+            </div>
+          </form> <!-- END Search Form -->
       </div>
       <div class="dark-line"></div>
     </div>
+
     <div id="search-results">
       <!-- Ajax search results -->
-      <!-- End Ajax results -->
+      <!-- END Ajax results -->
     </div>
-  </main>
-  </div>
-</div>
-  <!-- Javascript -->
 
-  <style>
-
-
-    #sidebar.active {
-      margin-left: -250px;
-    }
-        
-    a:hover, a:focus {
-        color: inherit;
-        text-decoration: none;
-        transition: all 0.3s;
-    }
-
-    #sidebar .sidebar-header {
-        padding: 20px;
-    }
-
-    #sidebar ul.components {
-        padding: 20px 0;
-        /* border-bottom: 1px solid #47748b; */
-    }
-
-    #sidebar ul p {
-        padding: 10px;
-    }
-
-    #sidebar ul li a {
-        padding: 10px;
-        font-size: 0.9rem;
-        display: block;
-        color: #606060;
-    }
-    #sidebar ul li a:hover {
-        font-weight: 600;
-    }
-
-    #sidebar ul li.active > a, a[aria-expanded="true"] {
-        color: #606060;
-        font-weight: 600;
-    }
-    ul ul a, label {
-        font-size: 0.9em !important;
-        padding-left: 8px !important;
-    }
-
-
-
-    a[data-toggle="collapse"] {
-        position: relative;
-    :after {
-        display: block;
-        position: absolute;
-        top: 50%;
-        right: 20px;
-        transform: translateY(-50%);
-    }
-    @media (max-width: 900px) {
-      #sidebar {
-          margin-left: -250px;
-      }
-      #sidebar.active {
-          margin-left: 0;
-      }
-    }
-  
-  </style>
-  {% block js%}
-  <script>
-    $(document).ready(function () {
-
-      $('#sidebarCollapse').on('click', function () {
-          $('#sidebar').toggleClass('active');
-      });
-
-    });
-
-    $(document).ready(function () {
-
-    $("#sidebar").mCustomScrollbar({
-        theme: "minimal"
-    });
-
-    $('#sidebarCollapse').on('click', function () {
-        // open or close navbar
-        $('#sidebar').toggleClass('active');
-        // close dropdowns
-        $('.collapse.in').toggleClass('in');
-        // and also adjust aria-expanded attributes we use for the open/closed arrows
-        // in our CSS
-        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-    });
-
-    });
-  
-    $('.list-group-item .custom-control-label').on('click', function(){
-      var checkBox = $(this).prev('input'); 
-      
-      if($(checkBox).attr('checked'))
-        $(checkBox).removeAttr('checked');
-      else
-        $(checkBox).attr('checked', 'checked');
-        
-      return false;
-
-    })
-  </script>
-  {% endblock %}
+  </main> <!-- END Main -->
+  <!-- Sidebar script -->
+  <script src="{% static 'js/sidebar.js' %}"></script>
   {% endblock %}
 </body>
 </html>
